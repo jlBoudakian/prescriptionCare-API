@@ -19,11 +19,16 @@ router.route('/users/:id')
     .delete(userServices.remove);
 
 
+// IMPORT MEDICINE-SERVICES
+const medicineServices = require('./medicine-services');
+// USERS ROUTES
+router.route('/medicines')
+    .get(medicineServices.read)
+    .post(medicineServices.create);
+router.route('/medicines/:id')
+    .get(medicineServices.readById)
+    .put(medicineServices.update)
+    .delete(medicineServices.remove);
 
 
-
-
-
-
-
-module.exports = router;
+    module.exports = router;

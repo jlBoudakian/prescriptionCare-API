@@ -1,8 +1,12 @@
+const connect = require('./db-services');
+
 exports.create = (req, res) => {
     res.json({
         status: "success",
         message: "Create method successfully"
     });
+    connect.createCollection('users', {name: req.body.name, age: req.body.age});
+
 };
 
 exports.read = (req, res) => {

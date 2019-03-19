@@ -11,10 +11,11 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
 
     const db = client.db(databaseName);
 
-    db.collection('users').insertOne({     
-        name: 'Andrew',     
-        age: 27 
-    });
+    // const createCollection = db.collection(collectionName).insertOne(jsonInformation);
 
+    exports.createCollection = (collectionName, jsonInformation) => {
+        db.collection(collectionName).insertOne(jsonInformation);
+        console.log('done');
+    }
 
 });
