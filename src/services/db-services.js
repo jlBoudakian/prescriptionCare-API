@@ -11,11 +11,40 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
 
     const db = client.db(databaseName);
 
-    // const createCollection = db.collection(collectionName).insertOne(jsonInformation);
 
+    //READ DOCUMENTS
+    exports.readDocuments = (collectionName, jsonInformation) => {
+        db.collection(collectionName).find(jsonInformation).toArray()
+        .then((result) => { console.log('Done') })
+        .catch((error) => { console.log('Error') });
+    }
+
+    //CREATE A DOCUMENT
     exports.createCollection = (collectionName, jsonInformation) => {
-        db.collection(collectionName).insertOne(jsonInformation);
-        console.log('done');
+        db.collection(collectionName).insertOne(jsonInformation)
+        .then((result) => { console.log('Done') })
+        .catch((error) => { console.log('Error') });
+    }
+
+    //READ A DOCUMENT
+    exports.readDocumentById = (collectionName, jsonInformation) => {
+        db.collection(collectionName).findOne(jsonInformation)
+        .then((result) => { console.log('Done') })
+        .catch((error) => { console.log('Error') });
+    }
+
+    //UPDATE A DOCUMENT
+    exports.updateDocumentById = (collectionName, jsonInformation, change) => {
+        db.collection(collectionName).updateOne(jsonInformation, change)
+        .then((result) => { console.log('Done') })
+        .catch((error) => { console.log('Error') })
+    }
+
+    //DELETE A DOCUMENT
+    exports.deleteDocumentById = (collectionName, jsonInformation) => {
+        db.collection(collectionName).deleteOne(jsonInformation)
+            .then((result) => { console.log('Done') })
+            .catch((error) => { console.log('Error') });
     }
 
 });
