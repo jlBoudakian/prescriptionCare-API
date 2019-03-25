@@ -21,7 +21,7 @@ router.route('/users/:id')
 
 // IMPORT MEDICINE-SERVICES
 const medicineServices = require('./medicine-services');
-// USERS ROUTES
+// MEDICINE ROUTES
 router.route('/medicines')
     .get(medicineServices.read)
     .post(medicineServices.create);
@@ -30,5 +30,15 @@ router.route('/medicines/:id')
     .put(medicineServices.update)
     .delete(medicineServices.remove);
 
+// IMPORT SCHEDULING-SERVICES
+const scheduleServices = require('./scheduling-services');
+// SCHEDULE ROUTES
+router.route('/scheduling')
+    .get(scheduleServices.read)
+    .post(scheduleServices.create);
+router.route('/scheduling/:id')
+    .get(scheduleServices.readById)
+    .put(scheduleServices.update)
+    .delete(scheduleServices.remove);
 
-    module.exports = router;
+module.exports = router;
