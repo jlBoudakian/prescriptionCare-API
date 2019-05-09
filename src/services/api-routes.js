@@ -41,4 +41,15 @@ router.route('/scheduling/:id')
     .put(scheduleServices.update)
     .delete(scheduleServices.remove);
 
+// IMPORT AUTHENTICATION-SERVICES
+const authenticationServices = require('./authentication-services');
+// AUTHENTICATION ROUTES
+router.route('/authentication')
+    // .get(scheduleServices.read)
+    .post(authenticationServices.read);
+// router.route('/scheduling/:id')
+//     .get(scheduleServices.readById)
+//     .put(scheduleServices.update)
+//     .delete(scheduleServices.remove);
+
 module.exports = router;

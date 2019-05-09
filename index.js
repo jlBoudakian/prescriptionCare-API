@@ -3,7 +3,6 @@ const db = require('./src/services/db-services');
 
 const app = express();
 
-
 // Setup server port
 const port = process.env.PORT || 8080;
 
@@ -22,12 +21,10 @@ app.get('/', ((req, res) => res.send('Hello World with Express')));
 
 const apiRoutes = require("./src/services/api-routes");
 
+
 app.use('/api', apiRoutes);
-
-
-
 
 // Launch app to listen to specified port
 app.listen(port, function () {
-     console.log("Running RestHub on port " + port);
+   console.log("Running RestHub on port " + port);
 });

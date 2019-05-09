@@ -13,16 +13,16 @@ mongodb.MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, cl
 
 
     //READ DOCUMENTS
-    exports.readDocuments = (collec,filter, order) => {
+    exports.readDocuments = (collec, filter, order) => {
 
         return new Promise((resolve, reject) => {
 
-            db.collection(collec).find(filter).sort(order).toArray()
+            db.collection(collec).find(filter).sort(order).count()
                 .then((result) => {
                     return resolve(result);
                 })
                 .catch((error) => {
-                    return reject(result);
+                    return reject(error);
                 });
         })
 

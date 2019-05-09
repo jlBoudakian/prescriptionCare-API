@@ -96,7 +96,7 @@ exports.create = (req, res) => {
 
     switch (req.body.typeID) {
 
-        case '1':
+        case 1:
 
             data = {
                 active: true,
@@ -108,11 +108,11 @@ exports.create = (req, res) => {
                 medEnd: req.body.medEnd,
                 medTimesDay: req.body.medTimesDay
             }
-            console.log('1');
-            console.log(data);
+            // console.log('1');
+            // console.log(data);
             break;
 
-        case '2':
+        case 2:
 
             data = {
                 active: true,
@@ -122,11 +122,11 @@ exports.create = (req, res) => {
                 title: req.body.title,
                 description: req.body.description
             }
-            console.log('2');
-            console.log(data);
+            // console.log('2');
+            // console.log(data);
             break;
 
-        case '3':
+        case 3:
 
             data = {
                 active: true,
@@ -136,12 +136,11 @@ exports.create = (req, res) => {
                 title: req.body.title,
                 description: req.body.description
             }
-            console.log('3');
-            console.log(data);
+            // console.log('3');
+            // console.log(data);
             break;
 
     }
-    console.log('passou');
 
     connect.createCollection('schedule', data)
         .then((result) => {
