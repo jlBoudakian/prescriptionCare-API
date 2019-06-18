@@ -12,11 +12,19 @@ exports.read = (req, res) => {
 
     connect.readDocuments('users', filter, order)
         .then((result) => {
-            res.json({
-                status: HttpStatus.OK,
-                message: "Read method successfully!",
-                count: result
-            });
+            if (result === 0) {
+                res.json({
+                    status: HttpStatus.INTERNAL_SERVER_ERROR,
+                    message: "Problem"
+                });
+            } else {
+                console.log(result);
+                res.json({
+                    status: HttpStatus.OK,
+                    message: "Read method successfully!",
+                    count: result
+                });
+            }
         })
         .catch((err) => {
             console.log(err);
