@@ -17,14 +17,14 @@ mongodb.MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, cl
 
         return new Promise((resolve, reject) => {
 
-            db.collection(collec).find(filter).sort(order).count()
+            db.collection(collec).find(filter).sort(order).toArray()
                 .then((result) => {
                     return resolve(result);
                 })
                 .catch((error) => {
                     return reject(error);
                 });
-        })
+        });
 
     }
 
