@@ -22,7 +22,7 @@ exports.read = (req, res) => {
 
                 result.forEach((x) => {
                     const info = x;
-                    console.log(info);
+
                     if (info.email === filter.email && info.password === filter.password) {
 
                         const payload = {
@@ -30,14 +30,18 @@ exports.read = (req, res) => {
                             "name": info.name,
                             "email": info.email
                         }
+                        // console.log(payload);
 
-                        const key = token.create(payload);
+                        const authToken = token.create(payload);
+
+                        // console.log(authToken);
 
                         res.json({
                             status: HttpStatus.OK,
                             message: "Read method successfully!",
-                            auth: key
+                            auth: authToken
                         });
+
                     } else {
                         res.json({
                             status: HttpStatus.INTERNAL_SERVER_ERROR,
