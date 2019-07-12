@@ -1,6 +1,8 @@
 const connect = require('./db-services');
 const { ObjectID } = require('mongodb');
 const HttpStatus = require('http-status-codes');
+const token = require('../token');
+
 
 //READ DOCUMENTS
 exports.read = (req, res) => {
@@ -46,14 +48,25 @@ exports.create = (req, res) => {
 
     connect.createCollection('users', data)
         .then((result) => {
-            console.log(result);
+            // console.log(result);
+
+            // const payload 
+            const payload = {
+                id: result.insertedId,
+                name: data.name
+            };
+
+            // JWT 
+            const authToken = token.create(payload);
+
             res.json({
                 status: HttpStatus.OK,
-                message: "User created successfully!"
+                message: "User created successfully!",
+                auth: authToken
             });
         })
         .catch((err) => {
-            console.log(err);
+            // console.log(err);
             res.json({
                 status: HttpStatus.EXPECTATION_FAILED,
                 message: err

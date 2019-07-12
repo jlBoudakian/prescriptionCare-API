@@ -58,7 +58,9 @@ exports.create = (req, res) => {
 
     connect.createCollection('medicines', data)
         .then((result) => {
-            console.log(result);
+            // console.log(data);
+            // console.log(result);
+
             res.json({
                 status: HttpStatus.OK,
                 message: "Created successfully!"

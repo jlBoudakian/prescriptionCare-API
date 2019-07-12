@@ -26,15 +26,12 @@ exports.read = (req, res) => {
                     if (info.email === filter.email && info.password === filter.password) {
 
                         const payload = {
-                            "id": info._id,
-                            "name": info.name,
-                            "email": info.email
+                            id: info._id,
+                            name: info.name,
+                            email: info.email
                         }
-                        // console.log(payload);
 
                         const authToken = token.create(payload);
-
-                        // console.log(authToken);
 
                         res.json({
                             status: HttpStatus.OK,

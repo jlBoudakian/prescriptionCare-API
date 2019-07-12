@@ -35,8 +35,9 @@ mongodb.MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, cl
 
             db.collection(collec).insertOne(data)
                 .then((result) => {
-                    console.log(result.insertedId);
-                    return resolve('Done');
+                    // console.log(result.insertedId);
+                    // console.log(result);
+                    return resolve(result);
                 })
                 .catch((error) => {
                     return reject('Error');
